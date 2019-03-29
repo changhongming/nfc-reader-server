@@ -38,8 +38,10 @@ app.get('/', (req, res) => {
 
 /*
 TODO:
-1. 新增一個uri路由使用GET名為 /nfc/uid，並且回傳memoryStore => app.get(...)
-2. 新增一個uri路由使用GET名為 /nfc/lastuid，並且回傳lastNfcCard => app.get(...)
+1. 新增一個uri路由使用GET名為 /nfc/uid，並且回傳memoryStore 
+2. 新增一個uri路由使用GET名為 /nfc/lastuid，並且回傳lastNfcCard
+提示1： 使用 app.get(...) 來路由
+提示2： 並且使用 res.send(...) 來回傳請求資料 => 這邊的res為express的路由回調函式的第二個引數名稱
 */
 
 app.post('/nfc/uid', (req, res) => {
@@ -62,6 +64,19 @@ app.post('/nfc/uid', (req, res) => {
             /*
             TODO:
             範例：
+            {
+                <16進制UID字串1>: {
+                    "create_time": <創建時間>,
+                    "update_time": <修改時間>,
+                    "count"      : <刷卡次數>
+                },
+                <16進制UID字串2>: {
+                    "create_time": <創建時間>,
+                    "update_time": <修改時間>,
+                    "count"      : <刷卡次數>
+                },
+                ...
+            }
             memoryStore的物件格式為
             {
                 "D39E5D1C": {

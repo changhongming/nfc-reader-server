@@ -29,10 +29,12 @@
                 method: 'get',
                 url: '/nfc/lastuid'
             })
+                // 回傳成功觸發 then
                 .then(res => {
                     console.log(res)
                     document.getElementById('lastUid').innerHTML = res.data ? `${res.data.uid}${res.data.isNewCard ? ' => new card' : ''}` : "no card";
                 })
+                // 回傳失敗觸發 catch => (除了一般的失敗外，如果狀態碼為4xx或5xx也是觸發catch)
                 .catch(err => {
                     document.getElementById('lastUid').innerHTML = 'something worng';
                 });
